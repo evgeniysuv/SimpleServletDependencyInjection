@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ru.esuvorov</groupId>
-    <artifactId>JavaBrainsServlets</artifactId>
+    <artifactId>SimpleServletDependencyInjection</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <build>
@@ -33,6 +33,11 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
         </dependency>
     </dependencies>
 </project>

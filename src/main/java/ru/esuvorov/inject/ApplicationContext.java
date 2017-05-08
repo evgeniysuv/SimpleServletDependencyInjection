@@ -1,10 +1,10 @@
-package inject.abstracts;
+package ru.esuvorov.inject;
 
 /**
  * Created by esuvorov on 5/7/17.
  */
 public interface ApplicationContext {
-    void init(String xmlFile);//todo need to implement parser custom xml file
+    void init(String xmlFile);
 
     Object getBean(String name);
 

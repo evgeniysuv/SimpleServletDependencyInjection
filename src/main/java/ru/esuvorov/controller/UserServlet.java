@@ -1,7 +1,7 @@
-package controller;
+package ru.esuvorov.controller;
 
-import annotation.Inject;
-import dao.UserDao;
+import ru.esuvorov.annotation.Inject;
+import ru.esuvorov.dao.UserDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Simple Servlet",
-        description = "This is a simple servlet with annotations",
+@WebServlet(name = "User Servlet",
         urlPatterns = "/getServlet",
         initParams = {
-                @WebInitParam(name = "path", value = "dao.UserDaoImpl"),
+                @WebInitParam(name = "path", value = "ru.esuvorov.dao.UserDaoImpl"),
                 @WebInitParam(name = "appCtxPath", value = "/applicationContext.xml"),
-                @WebInitParam(name = "appCtxClass", value = "inject.ApplicationContextImpl")
+                @WebInitParam(name = "appCtxClass", value = "ru.esuvorov.inject.ApplicationContextImpl")
         }
 )
 public class UserServlet extends DependencyInjectionServlet {

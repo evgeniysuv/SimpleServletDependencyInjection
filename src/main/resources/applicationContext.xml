@@ -1,1 +1,4 @@
-<
+<?xml version="1.0"?>
+<context>
+    <bean name="userDaoImpl" class="ru.esuvorov.dao.UserDaoImpl"/>
+</context>

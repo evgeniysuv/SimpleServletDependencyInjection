@@ -1,4 +1,4 @@
-package dao;
+package ru.esuvorov.dao;
 
 /**
  * Created by esuvorov on 5/7/17.
