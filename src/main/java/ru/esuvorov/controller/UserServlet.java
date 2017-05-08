@@ -13,7 +13,6 @@ import java.io.IOException;
 @WebServlet(name = "User Servlet",
         urlPatterns = "/getServlet",
         initParams = {
-                @WebInitParam(name = "path", value = "ru.esuvorov.dao.UserDaoImpl"),
                 @WebInitParam(name = "appCtxPath", value = "/applicationContext.xml"),
                 @WebInitParam(name = "appCtxClass", value = "ru.esuvorov.inject.ApplicationContextImpl")
         }
