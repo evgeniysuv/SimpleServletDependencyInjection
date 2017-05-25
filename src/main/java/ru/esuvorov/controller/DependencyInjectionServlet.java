@@ -1,7 +1,7 @@
 package ru.esuvorov.controller;
 
+import org.apache.log4j.Logger;
 import ru.esuvorov.annotation.Inject;
-import ru.esuvorov.dao.UserDaoImpl;
 import ru.esuvorov.exceptions.ApplicationContextNotFoundException;
 import ru.esuvorov.inject.ApplicationContext;
 
@@ -16,10 +16,9 @@ import java.util.List;
  */
 public class DependencyInjectionServlet extends HttpServlet {
 
+    private static final Logger LOGGER = Logger.getLogger(DependencyInjectionServlet.class);
     private static final String APP_CTX_CONFIG_PATH = "appCtxPath";
     private static final String APP_CTX_CLASS = "appCtxClass";
-
-//    private static Logger logger = Logger.getLogger(DependencyInjectionServlet.class.getName());
 
     @Override
     public void init() throws ServletException {
@@ -30,12 +29,7 @@ public class DependencyInjectionServlet extends HttpServlet {
             field.setAccessible(true);
             Inject injectAnnotation = field.getAnnotation(Inject.class);
             String beanName = injectAnnotation.value();
-            System.out.println("bean name = " + beanName);
             Object bean = context.getBean(beanName);
-            System.out.println(bean.getClass().getName());
-            if (bean instanceof UserDaoImpl) {
-                System.out.println("!!!!!");
-            }
             try {
                 field.set(this, bean);
             } catch (IllegalAccessException e) {
@@ -66,8 +60,7 @@ public class DependencyInjectionServlet extends HttpServlet {
             field.setAccessible(true);
             Inject injectAnnotation = field.getAnnotation(Inject.class);
             if (injectAnnotation != null) {
-//                logger.debug("@Inject annotation on field = " + field.getName() + "has been found");
-                System.out.println("@Inject annotation on field = " + field.getName() + " has been found");
+                LOGGER.debug("@Inject annotation on field = " + field.getName() + "has been found");
                 injectedFields.add(field);
             }
         }

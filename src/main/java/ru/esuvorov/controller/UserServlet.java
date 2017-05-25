@@ -2,6 +2,8 @@ package ru.esuvorov.controller;
 
 import ru.esuvorov.annotation.Inject;
 import ru.esuvorov.dao.UserDao;
+import ru.esuvorov.model.User;
+import ru.esuvorov.model.enums.Gender;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -25,19 +27,22 @@ public class UserServlet extends DependencyInjectionServlet {
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("get request");
-        System.out.println(userDao.getName());
         response.sendRedirect("register.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Name : " + request.getParameter("name"));
-        System.out.println("Gender : " + request.getParameter("gender"));
-        System.out.println("Email : " + request.getParameter("email"));
-        System.out.println("Phone : " + request.getParameter("phone"));
-        System.out.println("City : " + request.getParameter("city"));
+
+        String name = request.getParameter("name");
+        String genderString = request.getParameter("gender");
+        Gender gender = genderString.equalsIgnoreCase(Gender.MALE.toString()) ? Gender.MALE : Gender.FEMALE;
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String city = request.getParameter("city");
+
+        User user = new User(name, gender, email, phone, city);
+        userDao.createUser(user);
 
         request.getRequestDispatcher("details.jsp").forward(request, response);
     }

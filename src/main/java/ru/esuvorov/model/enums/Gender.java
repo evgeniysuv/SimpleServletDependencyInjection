@@ -1,4 +1,4 @@
-package ru.esuvorov.model;
+package ru.esuvorov.model.enums;
 
 public enum Gender {
     FEMALE, MALE
